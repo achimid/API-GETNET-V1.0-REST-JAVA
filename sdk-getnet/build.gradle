@@ -1,23 +1,31 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
 group 'br.com.achimid.sdk.getnet'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-
 sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
+targetCompatibility = 1.8
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compileOnly "org.projectlombok:lombok:1.16.12"
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.2.0.Final'
-    compile group: 'org.hibernate', name: 'hibernate-validator-annotation-processor', version: '5.0.0.Alpha1'
-    compile (
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1']
-    )
+    testCompile("junit:junit")
+    compileOnly("org.projectlombok:lombok:1.16.12")
+
+    compile("org.springframework.boot:spring-boot-starter")
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE'
+
 }
